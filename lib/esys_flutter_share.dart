@@ -11,8 +11,8 @@ class Share {
 
   /// Sends a text to other apps.
   static void text(String title, String text, String mimeType,
-      {Rect sharePositionOrigin}) {
-    Map argsMap = <String, dynamic>{
+      {Rect? sharePositionOrigin}) {
+    Map<String, dynamic> argsMap = <String, dynamic>{
       'title': '$title',
       'text': '$text',
       'mimeType': '$mimeType'
@@ -24,8 +24,8 @@ class Share {
   /// Sends a file to other apps.
   static Future<void> file(
       String title, String name, List<int> bytes, String mimeType,
-      {String text = '', Rect sharePositionOrigin}) async {
-    Map argsMap = <String, dynamic>{
+      {String text = '', Rect? sharePositionOrigin}) async {
+    Map<String, dynamic> argsMap = <String, dynamic>{
       'title': '$title',
       'name': '$name',
       'mimeType': '$mimeType',
@@ -42,8 +42,8 @@ class Share {
   /// Sends multiple files to other apps.
   static Future<void> files(
       String title, Map<String, List<int>> files, String mimeType,
-      {String text = '', Rect sharePositionOrigin}) async {
-    Map argsMap = <String, dynamic>{
+      {String text = '', Rect? sharePositionOrigin}) async {
+    Map<String, dynamic> argsMap = <String, dynamic>{
       'title': '$title',
       'names': files.entries.toList().map((x) => x.key).toList(),
       'mimeType': mimeType,
@@ -63,7 +63,7 @@ class Share {
   }
 
   static Map<String, dynamic> _addRect(
-      Map<String, dynamic> argsMap, Rect sharePositionOrigin) {
+      Map<String, dynamic> argsMap, Rect? sharePositionOrigin) {
     if (sharePositionOrigin != null) {
       argsMap['originX'] = sharePositionOrigin.left;
       argsMap['originY'] = sharePositionOrigin.top;
